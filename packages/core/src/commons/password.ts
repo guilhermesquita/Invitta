@@ -1,4 +1,4 @@
-export class Password {
+export default class Password {
   static generate(length: number = 8): string {
     const charactersUppercase =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

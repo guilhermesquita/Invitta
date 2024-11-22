@@ -1,7 +1,6 @@
 "use client";
 
-import { Event, Guest } from "@/app/_core";
-import { events } from "@/app/_core/constants";
+import { Event, events, Guest } from "core";
 import DashboardEvento from "../../_component/DashboardEvent";
 import FormPasswordEvent from "../../_component/FormPasswordEvent";
 import { use, useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import { Event } from "../events";
+import { Event } from "../event";
 
 const events: Event[] = [
   {

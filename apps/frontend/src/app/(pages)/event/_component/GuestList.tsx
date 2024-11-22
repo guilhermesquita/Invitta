@@ -1,4 +1,4 @@
-import { Guest } from "@/app/_core";
+import { Guest } from "core";
 import GuestItem from "./GuestItem";
 
 export interface GuestListProps {

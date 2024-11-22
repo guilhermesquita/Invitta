@@ -1,4 +1,4 @@
-export class IdGenerator {
+export default class IdGenerator {
   static newId(): string {
     return `${this.hash()}-${this.hash()}-${this.hash()}`;
   }

@@ -6,11 +6,5 @@ import complementGuest from "./function/complementGuest";
 import createEmptyGuest from "./function/createEmptyGuest";
 import { createEmptyEvent } from "./function/createEmptyEvent";
 
-export type {
-  Event,
-  Guest,
-  complementEvent,
-  complementGuest,
-  createEmptyEvent,
-  createEmptyGuest,
-};
+export type { Event, Guest };
+export { complementEvent, complementGuest, createEmptyEvent, createEmptyGuest };
