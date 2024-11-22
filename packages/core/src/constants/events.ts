@@ -15,7 +15,7 @@ const events: Event[] = [
     imageBackground:
       "https://images.prismic.io/vaultinum/0458a9f1-e149-4037-b9aa-aa4b4fb53c25_propriete-intellectuelle-code-source-protection-compressed.jpg?auto=compress,format&rect=0,0,2400,981&w=2400&h=981",
     publicAwaited: 200,
-    guest: [
+    guests: [
       {
         id: "h1g2x30pglq-2qy7mc3nd8h-qq494djtbcq",
         name: "Alice Silva",
@@ -55,7 +55,7 @@ const events: Event[] = [
     imageBackground:
       "https://blog.cronapp.io/wp-content/uploads/2020/09/javascript-1.jpg",
     publicAwaited: 100,
-    guest: [
+    guests: [
       {
         id: "epy7dvzdn-h5ffojxd8xf-4u3dbflvkcs",
         name: "Eduardo Santos",
@@ -87,7 +87,7 @@ const events: Event[] = [
     imageBackground:
       "https://www.frontendmag.com/wp-content/uploads/2023/01/easiest-front-end-framework.jpeg",
     publicAwaited: 150,
-    guest: [
+    guests: [
       {
         id: "8tpp19ouoqi-6nm51io1n5a-lw6itbwufu",
         name: "Gabriela Rocha",
@@ -128,7 +128,7 @@ const events: Event[] = [
     imageBackground:
       "https://www.psicologo.com.br/wp-content/uploads/casamento-feliz-um-guia-para-casamentos-felizes.jpg",
     publicAwaited: 150,
-    guest: [
+    guests: [
       {
         id: "6odwyyikpiu-4rm8d4upd7a-2ve4yb8dq2",
         name: "Bruno Cardoso",
@@ -161,7 +161,7 @@ const events: Event[] = [
     imageBackground:
       "https://img.freepik.com/vetores-gratis/fundo-da-celebracao-dos-baloes-e-confetti_1048-2223.jpg",
     publicAwaited: 80,
-    guest: [
+    guests: [
       {
         id: "ir1r1ucu2od-461dkhc72tm-ydo4met07uj",
         name: "Maria Souza",
@@ -194,7 +194,7 @@ const events: Event[] = [
     imageBackground:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ-0_VdF_lcXATRHDUaaI0AQCt8R6Y_ShR3A&s",
     publicAwaited: 300,
-    guest: [
+    guests: [
       {
         id: "c1a5x0qgus-cfswa77ods5-z4nn6bezylp",
         name: "Cláudia Lima",
@@ -226,7 +226,7 @@ const events: Event[] = [
     imageBackground:
       "https://img.freepik.com/fotos-premium/ondas-abstratas-brilhantes-de-celebracao-do-arco-iris-fluem-suavemente-geradas-por-ia_188544-9530.jpg?semt=ais_hybrid",
     publicAwaited: 50,
-    guest: [
+    guests: [
       {
         id: "oqsjw6lyayh-q9b8sxtkvu-9cmebgi34ru",
         name: "Thiago Oliveira",

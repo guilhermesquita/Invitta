@@ -11,5 +11,5 @@ export default interface Event {
   image: string;
   imageBackground: string;
   publicAwaited: number;
-  guest: Guest[];
+  guests: Guest[];
 }
