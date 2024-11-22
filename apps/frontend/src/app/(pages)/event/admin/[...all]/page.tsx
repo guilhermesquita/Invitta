@@ -17,9 +17,9 @@ const AdminPageEvent = (props: any) => {
     params.all[1] ?? null
   );
 
-  const presents = event?.guest.filter((g) => g.confirmed) ?? [];
+  const presents = event?.guests.filter((g) => g.confirmed) ?? [];
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const notPresents = event?.guest.filter((g) => !g.confirmed) ?? [];
+  const notPresents = event?.guests.filter((g) => !g.confirmed) ?? [];
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const total =
