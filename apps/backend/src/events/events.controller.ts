@@ -11,43 +11,40 @@ import {
   complementGuest,
   Data,
   Event,
-  events,
   Guest,
   IdGenerator,
 } from 'core';
+import { EventPrisma } from './event.prisma';
 
 @Controller('events')
 export class EventsController {
+  constructor(readonly repo: EventPrisma) {}
   @Get()
   async getEvents() {
+    const events = await this.repo.getEvents();
     return events.map(this.serialize);
   }
 
   @Get(':idOrAlias')
   async getEvent(@Param('idOrAlias') idOrAlias: string) {
-    // let event: Event;
+    let event: Event;
     if (IdGenerator.validate(idOrAlias)) {
-      //   event = await this.repo.buscarPorId(idOuAlias, true);
-      return this.serialize(events.find((e) => e.id === idOrAlias));
+      event = await this.repo.getById(idOrAlias, true);
     } else {
-      //   event = await this.repo.buscarPorAlias(idOuAlias, true);
-      return this.serialize(events.find((e) => e.alias === idOrAlias));
+      event = await this.repo.getByAlias(idOrAlias, true);
     }
-    // return this.serializar(event);
+    return this.serialize(event);
   }
 
   @Get('validate/:alias/:id')
   async validateAlias(@Param('alias') alias: string, @Param('id') id: string) {
-    const event = events.find((event) => event.alias === alias);
+    const event = await this.repo.getByAlias(alias);
     return { valid: !event || event.id === id };
   }
 
   @Post('access')
   async accessEvento(@Body() data: { id: string; password: string }) {
-    // const event = await this.repo.buscarPorId(dados.id);
-    const event = events.find(
-      (event) => event.id === event.id && event.password === event.password,
-    );
+    const event = await this.repo.getById(data.id);
 
     if (!event) {
       throw new HttpException('Evento não encontrado.', 400);
@@ -62,34 +59,25 @@ export class EventsController {
 
   @Post(':alias/guest')
   async saveGuest(@Param('alias') alias: string, @Body() guest: Guest) {
-    // const event = await this.repo.buscarPorAlias(alias);
-    const event = events.find((event) => event.alias === alias);
+    const event = await this.repo.getByAlias(alias);
     if (!event) {
       throw new HttpException('evento não encontrado.', 400);
     }
 
     const guestComplete = complementGuest(guest);
-    event.guests.push(guestComplete);
-    return this.serialize(event);
-    // await this.repo.salvarConvidado(event, convidadoCompleto);
+    await this.repo.saveGuest(event, guestComplete);
   }
 
   @Post()
   async saveEvent(@Body() event: Event) {
-    // const eventRegistred = await this.repo.buscarPorAlias(event.alias);
-    const eventRegistred = events.find(
-      (ev) => ev.alias === event.alias || ev.id === event.id,
-    );
+    const eventRegistred = await this.repo.getByAlias(event.alias);
 
     if (eventRegistred && eventRegistred.id !== event.id) {
       throw new HttpException('Já existe um evento com esse alias ou id.', 400);
     }
 
     const completeEvent = complementEvent(this.unserialize(event));
-    events.push(completeEvent);
-    this.serialize(completeEvent);
-
-    // await this.repo.salvar(eventoCompleto);
+    await this.repo.saveEvent(completeEvent);
   }
 
   private serialize(event: Event) {
@@ -98,6 +86,6 @@ export class EventsController {
   }
 
   private unserialize(event: any): Event {
-    return { ...event, date: Data.unformat(event.date) };
+    return { ...event, date: Data.unformat(event.date) } as Event;
   }
 }

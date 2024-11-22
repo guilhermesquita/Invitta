@@ -14,8 +14,8 @@ export default function complementGuest(guest: Partial<Guest>): Guest {
 
   const guestUpdated = {
     ...guest,
-    qtdeAcompanhantes: hasCompanions ? numberCompanions : 0,
-    possuiAcompanhantes: hasCompanions,
+    numberCompanions: hasCompanions ? numberCompanions : 0,
+    hasCompanions: hasCompanions,
   };
 
   return guestUpdated as Guest;
