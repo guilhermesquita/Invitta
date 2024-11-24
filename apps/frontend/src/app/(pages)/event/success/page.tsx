@@ -14,7 +14,6 @@ export default function EventoSucesso() {
   const [urlAtual, setUrlAtual] = useState("");
 
   useEffect(() => {
-    console.log(event);
     setUrlAtual(window.location.origin);
   }, []);
 

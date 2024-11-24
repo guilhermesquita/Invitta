@@ -1,5 +1,5 @@
 import Pages from "../_components/_template/pages";
-import { Toaster } from "../_components/_ui/toaster";
+import { Toaster } from "../_components/ui/toaster";
 import { ProviderContextEvent } from "../_data/_context/ContextEvent";
 import { ProviderContextMessages } from "../_data/_context/ContextMessages";
 
