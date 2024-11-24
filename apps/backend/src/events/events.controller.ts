@@ -66,6 +66,7 @@ export class EventsController {
 
     const guestComplete = complementGuest(guest);
     await this.repo.saveGuest(event, guestComplete);
+    return this.serialize(event);
   }
 
   @Post()

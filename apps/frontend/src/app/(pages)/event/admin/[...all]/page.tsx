@@ -1,10 +1,10 @@
 "use client";
 
 import { Event, events, Guest } from "core";
-import FormPasswordEvent from "../../_component/FormPasswordEvent";
 import { use, useCallback, useEffect, useState } from "react";
 import useAPI from "@/app/_data/_hook/useApi";
 import DashboardEvent from "../../_component/DashboardEvent";
+import FormPasswordEvent from "../../_component/FormPasswordEvent";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AdminPageEvent = (props: any) => {
@@ -15,9 +15,7 @@ const AdminPageEvent = (props: any) => {
   const id = params.all[0];
   const [event, setEvent] = useState<Event | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [password, _setPassword] = useState<string | null>(
-    params.all[1] ?? null
-  );
+  const [password, setPassword] = useState<string>(params.all[1] ?? "");
 
   const presents = event?.guests.filter((g) => g.confirmed) ?? [];
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -56,7 +54,11 @@ const AdminPageEvent = (props: any) => {
           updateGuestList={getEvent}
         />
       ) : (
-        <FormPasswordEvent />
+        <FormPasswordEvent
+          accessEvent={getEvent}
+          password={password}
+          setPassword={setPassword}
+        />
       )}
     </div>
   );

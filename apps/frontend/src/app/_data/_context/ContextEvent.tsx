@@ -36,11 +36,11 @@ export function ProviderContextEvent(props: any) {
   const saveEvent = useCallback(
     async function () {
       try {
-        const eventoCreated = await httpPost("/events", event);
+        const eventCreated = await httpPost("/events", event);
         router.push("/event/success");
         setEvent({
-          ...eventoCreated,
-          data: Data.unformat(eventoCreated.data),
+          ...eventCreated,
+          data: Data.unformat(eventCreated.data),
         });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
@@ -55,6 +55,7 @@ export function ProviderContextEvent(props: any) {
       try {
         const event = await httpGet(`/events/${idOrAlias}`);
         if (!event) return;
+        console.log(event);
         setEvent({
           ...event,
           data: Data.format(event.data),
@@ -71,7 +72,7 @@ export function ProviderContextEvent(props: any) {
     async function () {
       try {
         await httpPost(`/events/${event.alias}/guest`, guest);
-        router.push("/convite/obrigado");
+        router.push("/invite/thanks");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         addError(error.messagem ?? "Ocorreu um erro inesperado!");

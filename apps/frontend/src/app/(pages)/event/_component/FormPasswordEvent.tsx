@@ -3,7 +3,7 @@ import FieldHome from "@/app/_components/_commons/FieldHome";
 export interface FormPasswordEventProps {
   password: string;
   setPassword: (password: string) => void;
-  acessarEvento: () => void;
+  accessEvent: () => void;
 }
 
 export default function FormPasswordEvent(props: FormPasswordEventProps) {
@@ -24,7 +24,7 @@ export default function FormPasswordEvent(props: FormPasswordEventProps) {
         type="password"
         outterClassName="w-full"
       />
-      <button className="btn azul" onClick={props.acessarEvento}>
+      <button className="btn azul" onClick={props.accessEvent}>
         Acessar Evento
       </button>
     </div>

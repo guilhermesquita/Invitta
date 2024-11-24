@@ -1,3 +1,4 @@
+"use client";
 import Window from "@/app/_components/_commons/window";
 import useEvent from "@/app/_data/_hook/useEvent";
 import FormEvent from "./_component/FormEvent";

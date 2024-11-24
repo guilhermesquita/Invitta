@@ -14,6 +14,7 @@ export default function EventoSucesso() {
   const [urlAtual, setUrlAtual] = useState("");
 
   useEffect(() => {
+    console.log(event);
     setUrlAtual(window.location.origin);
   }, []);
 
@@ -30,12 +31,12 @@ export default function EventoSucesso() {
           <CopyClipboard
             icon={IconLink}
             label="Link para Convidar"
-            text={`${urlAtual}/convite/${event.alias}`}
+            text={`${urlAtual}/invite/${event.alias}`}
           />
           <CopyClipboard
             icon={IconLink}
             label="Link Administrador"
-            text={`${urlAtual}/evento/admin/${event.id}`}
+            text={`${urlAtual}/event/admin/${event.id}`}
           />
           <CopyClipboard
             icon={IconFingerprint}
