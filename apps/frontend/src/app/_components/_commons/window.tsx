@@ -45,7 +45,7 @@ export default function Window(props: WindowProps) {
           </div>
           <div className="flex-1"></div>
           <Image
-            src="/elementos.png"
+            src="/elements.png"
             alt="Elementos decorativos"
             width={140}
             height={140}

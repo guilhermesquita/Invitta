@@ -4,14 +4,15 @@ import Statistic from "@/app/_components/_commons/Statistic";
 import AccessQrCode from "./AccessQrCode";
 import InfoEvent from "./InfoEvent";
 
-export interface DashboardEventoProps {
+export interface DashboardEventProps {
   event: Event;
   presents: Guest[];
   notPresents: Guest[];
   total: number;
+  updateGuestList: () => void;
 }
 
-export default function DashboardEvento(props: DashboardEventoProps) {
+export default function DashboardEvent(props: DashboardEventProps) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-2 self-stretch">
@@ -36,7 +37,10 @@ export default function DashboardEvento(props: DashboardEventoProps) {
         />
       </div>
 
-      <button className="botao azul self-end mt-12">
+      <button
+        className="btn azul self-end mt-12"
+        onClick={props.updateGuestList}
+      >
         <span>Atualizar Lista de Convidados</span>
       </button>
 

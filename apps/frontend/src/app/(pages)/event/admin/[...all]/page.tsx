@@ -1,12 +1,14 @@
 "use client";
 
 import { Event, events, Guest } from "core";
-import DashboardEvento from "../../_component/DashboardEvent";
 import FormPasswordEvent from "../../_component/FormPasswordEvent";
-import { use, useEffect, useState } from "react";
+import { use, useCallback, useEffect, useState } from "react";
+import useAPI from "@/app/_data/_hook/useApi";
+import DashboardEvent from "../../_component/DashboardEvent";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AdminPageEvent = (props: any) => {
+  const { httpPost } = useAPI();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const params: any = use(props.params);
 
@@ -32,6 +34,12 @@ const AdminPageEvent = (props: any) => {
     setEvent(event ?? null);
   }
 
+  const getEvent = useCallback(async () => {
+    if (!id || !password) return;
+    const event = await httpPost("/events/access", { id, password });
+    setEvent(event);
+  }, [httpPost, id, password]);
+
   useEffect(() => {
     loadEvent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,11 +48,12 @@ const AdminPageEvent = (props: any) => {
   return (
     <div className="flex flex-col items-center">
       {event ? (
-        <DashboardEvento
+        <DashboardEvent
           event={event}
           presents={presents}
           notPresents={notPresents}
           total={total}
+          updateGuestList={getEvent}
         />
       ) : (
         <FormPasswordEvent />

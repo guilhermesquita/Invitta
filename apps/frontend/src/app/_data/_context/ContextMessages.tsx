@@ -11,7 +11,7 @@ export interface ContextMessagesProps {
 const ContextMessages = createContext<ContextMessagesProps>({} as any);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function ProvedorContextMessages(props: any) {
+export function ProviderContextMessages(props: any) {
   const { toast } = useToast();
 
   const addMessage = useCallback(
