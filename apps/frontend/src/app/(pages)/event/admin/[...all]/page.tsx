@@ -14,14 +14,11 @@ const AdminPageEvent = (props: any) => {
 
   const id = params.all[0];
   const [event, setEvent] = useState<Event | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [password, setPassword] = useState<string>(params.all[1] ?? "");
 
   const presents = event?.guests.filter((g) => g.confirmed) ?? [];
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const notPresents = event?.guests.filter((g) => !g.confirmed) ?? [];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const total =
     presents?.reduce((total: number, guest: Guest) => {
       return total + guest.numberCompanions + 1;

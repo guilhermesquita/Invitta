@@ -79,6 +79,7 @@ export class EventsController {
 
     const completeEvent = complementEvent(this.unserialize(event));
     await this.repo.saveEvent(completeEvent);
+    return this.serialize(completeEvent);
   }
 
   private serialize(event: Event) {
