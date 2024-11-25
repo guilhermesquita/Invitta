@@ -40,7 +40,7 @@ export function ProviderContextEvent(props: any) {
         router.push("/event/success");
         setEvent({
           ...eventCreated,
-          data: Data.unformat(eventCreated.data),
+          date: Data.unformat(eventCreated.date),
         });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
@@ -55,7 +55,6 @@ export function ProviderContextEvent(props: any) {
       try {
         const event = await httpGet(`/events/${idOrAlias}`);
         if (!event) return;
-        console.log(event);
         setEvent({
           ...event,
           data: Data.format(event.data),
