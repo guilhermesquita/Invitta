@@ -24,7 +24,7 @@ export default function FormPasswordEvent(props: FormPasswordEventProps) {
         type="password"
         outterClassName="w-full"
       />
-      <button className="btn azul" onClick={props.accessEvent}>
+      <button className="btn blue" onClick={props.accessEvent}>
         Acessar Evento
       </button>
     </div>

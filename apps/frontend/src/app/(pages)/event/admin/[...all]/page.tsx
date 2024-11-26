@@ -1,6 +1,6 @@
 "use client";
 
-import { Event, events, Guest } from "core";
+import { Event, Guest } from "core";
 import { use, useCallback, useEffect, useState } from "react";
 import useAPI from "@/app/_data/_hook/useApi";
 import DashboardEvent from "../../_component/DashboardEvent";
@@ -8,7 +8,7 @@ import FormPasswordEvent from "../../_component/FormPasswordEvent";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AdminPageEvent = (props: any) => {
-  const { httpPost } = useAPI();
+  const { httpPost, httpGet } = useAPI();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const params: any = use(props.params);
 
@@ -24,21 +24,31 @@ const AdminPageEvent = (props: any) => {
       return total + guest.numberCompanions + 1;
     }, 0) ?? 0;
 
-  function loadEvent() {
-    const event = events.find((ev) => ev.id === id && ev.password === password);
-    setEvent(event ?? null);
+  async function loadEvent() {
+    const events = await httpGet("/events");
+    const ev = events.find(
+      (ev: Event) => ev.id === id && ev.password === password
+    );
+    setEvent(ev);
   }
 
   const getEvent = useCallback(async () => {
     if (!id || !password) return;
-    const event = await httpPost("/events/access", { id, password });
-    setEvent(event);
+    await httpPost("/events/access", { id, password });
   }, [httpPost, id, password]);
 
   useEffect(() => {
-    loadEvent();
+    const ev = async () => {
+      await loadEvent();
+    };
+    ev();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, password]);
+
+  useEffect(() => {
+    getEvent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getEvent]);
 
   return (
     <div className="flex flex-col items-center">
@@ -48,7 +58,7 @@ const AdminPageEvent = (props: any) => {
           presents={presents}
           notPresents={notPresents}
           total={total}
-          updateGuestList={getEvent}
+          updateGuestList={loadEvent}
         />
       ) : (
         <FormPasswordEvent

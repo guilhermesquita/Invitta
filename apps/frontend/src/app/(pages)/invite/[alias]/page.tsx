@@ -32,7 +32,7 @@ export default function PaginaConvite(props: any) {
           <div className="border-t border-zinc-800"></div>
           <FormGuest guest={guest} guestChanged={changeGuest} />
           <button
-            className={`btn self-center ${guest.confirmed ? "verde" : "vermelho"}`}
+            className={`btn self-center ${guest.confirmed ? "green" : "red"}`}
             onClick={addGuest}
           >
             Confirmar {guest.confirmed ? "Presença" : "Ausência"}

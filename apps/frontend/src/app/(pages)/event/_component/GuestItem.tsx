@@ -13,7 +13,9 @@ export default function GuestItem(props: GuestItemProps) {
       </div>
       <div className="flex flex-col items-end">
         <span className="text-sm text-zinc-400">Acompanhantes</span>
-        <span className="text-xl font-bold">{props.guest.hasCompanions}</span>
+        <span className="text-xl font-bold">
+          {props.guest.numberCompanions}
+        </span>
       </div>
     </li>
   );
