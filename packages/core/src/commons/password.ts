@@ -4,7 +4,7 @@ export default class Password {
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLowerCase = charactersUppercase.toLocaleLowerCase();
     const charactersNumbers = "0123456789";
-    const charactersSpecialCharacters = '!@#$%^&*()_+{}[]|:"<>,.?/~`-=';
+    const charactersSpecialCharacters = "!@#$%&*";
 
     const groups = [
       charactersLowerCase,
